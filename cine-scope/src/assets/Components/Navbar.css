@@ -1,0 +1,44 @@
+nav{
+    padding: 10px;
+    background-color: hsl(0, 0%, 15%);
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.flex-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 5rem;
+    height: 3rem;
+}
+
+.nav-header{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, hsl(43, 74%, 39%, 70%),hsl(43, 74%, 49%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.genre-links select {
+    background-color: hsl(0, 0%, 15%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+
+@media (max-width:640px){
+    .logo{
+        display: none;
+    }
+    .nav-header{
+        font-size: 1rem;
+    }
+}
