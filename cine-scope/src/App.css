@@ -1,7 +1,15 @@
+html{
+  scroll-behavior: smooth;
+}
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  background-color: hsl(0, 0%, 15%);
 }

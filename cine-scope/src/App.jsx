@@ -1,13 +1,13 @@
-import Navbar from "./assets/Components/Navbar"
+import Navbar from "./assets/Components/Navbar/Navbar"
 import "./App.css"
-
-
-const API_KEY = "7c669c55";
-const API_URL = "http://www.omdbapi.com/?apikey=7c669c55"
+import Movies from "./Movies"
 
 function App() {
   return (
-    <Navbar/>
+    <>
+      <Navbar/>
+      <Movies/>
+    </>
   )
 }
 
