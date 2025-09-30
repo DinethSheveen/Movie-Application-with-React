@@ -10,15 +10,22 @@ function Movies() {
   const [movies,setMovies] = useState([])
   const [movieTitle,setMovieTitle] = useState("")
 
-  useEffect(()=>{
-    const fetchMovies = async() => {
+  const fetchMovies = async() => {
       const response = await axios.get(`${API_URL}&s=${movieTitle}`)
       setMovies(response.data.Search);
     }
-      fetchMovies()
-  },[movieTitle])  
 
-  
+    const renderMovie = ()=>{
+      fetchMovies()
+    } 
+
+    const handleKeyEvent = (event) => {
+      event.key === "Enter"? renderMovie() : ""
+    }
+
+  useEffect(()=>{
+
+  },[movieTitle]) 
 
   return (
     <div>
@@ -30,10 +37,10 @@ function Movies() {
         {/* MAIN SECTION */}
         <section id="main">
             <div className="input-controls">
-                <input type="text" value={movieTitle} onChange={(event)=>{
-                  setMovieTitle(event.target.value)
-                }} placeholder='Search though 1000 of movies...'/>
-                <button>Search <LiaSearchengin className='search-icon'/></button>
+                <input type="text" value={movieTitle}         placeholder='Search though 1000 of movies...' onChange={(event)=>{setMovieTitle(event.target.value)}} 
+                onKeyDown={handleKeyEvent(event)}
+                  />
+                <button onClick={renderMovie}>Search <LiaSearchengin className='search-icon'/></button>
             </div>
 
             {/* MOVIES SECTION */}
@@ -45,7 +52,7 @@ function Movies() {
                       <div key={index} className="movie-card">
                         {movie.Poster != "N/A"? <img src={movie.Poster} className='movie-poster'/>:<img src={noPosterImg}/>}
                         <div className='movie-title'>
-                          {movie.Poster === "N/A"? <p style={{color:"black"}}>{movie.Title}</p> : <p>{movie.Title}</p>}
+                          {movie.Poster === "N/A"? <p style={{color:"goldenrod"}}>{movie.Title}</p> : <p>{movie.Title}</p>}
                         </div>
 
                         <div className="hover-info">
