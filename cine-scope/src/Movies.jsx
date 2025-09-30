@@ -3,18 +3,22 @@ import axios from "axios"
 import "./Movies.css"
 import heroImg from "./assets/images/hero.webp"
 import { LiaSearchengin } from "react-icons/lia";
+import noPosterImg from "./assets/images/noPoster.jpg"
 
 function Movies() {
   const API_URL = "http://www.omdbapi.com/?apikey=7c669c55"
   const [movies,setMovies] = useState([])
+  const [movieTitle,setMovieTitle] = useState("")
 
   useEffect(()=>{
     const fetchMovies = async() => {
-      const response = await axios.get(`${API_URL}&s=superman`)
+      const response = await axios.get(`${API_URL}&s=${movieTitle}`)
       setMovies(response.data.Search);
     }
-    fetchMovies()
-  },[])  
+      fetchMovies()
+  },[movieTitle])  
+
+  
 
   return (
     <div>
@@ -26,7 +30,9 @@ function Movies() {
         {/* MAIN SECTION */}
         <section id="main">
             <div className="input-controls">
-                <input type="text" placeholder='Search though 1000 of movies...'/>
+                <input type="text" value={movieTitle} onChange={(event)=>{
+                  setMovieTitle(event.target.value)
+                }} placeholder='Search though 1000 of movies...'/>
                 <button>Search <LiaSearchengin className='search-icon'/></button>
             </div>
 
@@ -37,9 +43,9 @@ function Movies() {
                   {movies && movies.map((movie,index)=>{
                     return (
                       <div key={index} className="movie-card">
-                        {movie.Poster&& <img src={movie.Poster} className='movie-poster'/>}
+                        {movie.Poster != "N/A"? <img src={movie.Poster} className='movie-poster'/>:<img src={noPosterImg}/>}
                         <div className='movie-title'>
-                          <p>{movie.Title}</p>
+                          {movie.Poster === "N/A"? <p style={{color:"black"}}>{movie.Title}</p> : <p>{movie.Title}</p>}
                         </div>
 
                         <div className="hover-info">
