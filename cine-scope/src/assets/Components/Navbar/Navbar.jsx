@@ -1,6 +1,7 @@
 import React from 'react'
 import logo from "../../images/logo.svg"
 import "./Navbar.css"
+import { LiaSearchengin } from "react-icons/lia";
 
 function Navbar() {
   return (
@@ -21,8 +22,7 @@ function Navbar() {
 
                 {/* GENRE SELECTION*/}
                 <div className="menu-links">
-                    <div>Movies</div>
-                    <div>Tv Series</div>
+                    <a href="#searchMovie">Search Movie</a>
                 </div>
             </div>
         </nav>

@@ -29,17 +29,10 @@ nav{
     color: transparent;
 }
 
-.menu-links{
-    display: flex;
-    gap: 10px;
-    font-size: 1.1rem;
+.icon,.menu-links a{
+    text-decoration: none;
+    color: goldenrod;
 }
-
-.menu-links div:hover{
-    cursor: pointer;
-    font-weight: bold;
-}
-
 
 @media (max-width:576px){
     .logo{
