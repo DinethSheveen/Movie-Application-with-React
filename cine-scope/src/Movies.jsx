@@ -14,11 +14,7 @@ function Movies() {
       setMovies(response.data.Search);
     }
     fetchMovies()
-  },[]) 
-
-  const draft = movies[0]
-  console.log(draft);
-  
+  },[])  
 
   return (
     <div>
@@ -38,16 +34,26 @@ function Movies() {
             <div className="movies">
               {/* MOVIES GRID */}
               <div className="movies-grid">
-                <div className="movie-card">
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  <img src={draft.Poster} alt="" />
-                  
-                </div>
+                  {movies && movies.map((movie,index)=>{
+                    return (
+                      <div key={index} className="movie-card">
+                        {movie.Poster&& <img src={movie.Poster} className='movie-poster'/>}
+                        <div className='movie-title'>
+                          <p>{movie.Title}</p>
+                        </div>
+
+                        <div className="hover-info">
+                          <div className="year">
+                            {movie.Year}
+                          </div>
+
+                          <div className="type">
+                            {movie.Type}
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
               </div>
             </div>
         </section>
