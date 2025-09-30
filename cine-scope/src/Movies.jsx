@@ -4,9 +4,10 @@ import "./Movies.css"
 import heroImg from "./assets/images/hero.webp"
 import { LiaSearchengin } from "react-icons/lia";
 import Movie from './assets/Components/Movie';
+import { API_KEY } from '../config';
 
 function Movies() {
-  const API_URL = "http://www.omdbapi.com/?apikey=7c669c55"
+  const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
   const [movies,setMovies] = useState([])
   const [movieTitle,setMovieTitle] = useState("")
 
@@ -36,7 +37,7 @@ function Movies() {
 
         {/* MAIN SECTION */}
         <section id="main">
-            <div className="input-controls">
+            <div id="searchMovie" className="input-controls">
                 <input type="text" value={movieTitle}         placeholder='Search though 1000 of movies...' onChange={(event)=>{setMovieTitle(event.target.value)}} 
                 onKeyDown={(event)=>{handleKeyEvent(event)}}
                   />
