@@ -1,0 +1,54 @@
+nav{
+    padding: 10px;
+    background-color: hsl(0, 0%, 10%);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 5px 5px 10px grey;
+    z-index: 1000;
+}
+
+.flex-nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.logo{
+    width: 5rem;
+    height: 3rem;
+}
+
+.nav-header{
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, hsl(43, 74%, 39%, 70%),hsl(43, 74%, 49%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.menu-links{
+    display: flex;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.menu-links div:hover{
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+@media (max-width:576px){
+    .logo{
+        display: none;
+    }
+    .nav-header{
+        font-size: 1rem;
+    }
+    .menu-links{
+        flex-direction: column;
+    }
+}
