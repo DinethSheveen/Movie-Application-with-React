@@ -3,7 +3,7 @@ import axios from "axios"
 import "./Movies.css"
 import heroImg from "./assets/images/hero.webp"
 import { LiaSearchengin } from "react-icons/lia";
-import noPosterImg from "./assets/images/noPoster.jpg"
+import Movie from './assets/Components/Movie';
 
 function Movies() {
   const API_URL = "http://www.omdbapi.com/?apikey=7c669c55"
@@ -12,15 +12,15 @@ function Movies() {
 
   const fetchMovies = async() => {
       const response = await axios.get(`${API_URL}&s=${movieTitle}`)
-      setMovies(response.data.Search);
+      setMovies(response.data.Search);      
     }
 
-    const renderMovie = ()=>{
-      fetchMovies()
+    const renderMovie = ()=>{      
+      fetchMovies()      
     } 
 
     const handleKeyEvent = (event) => {
-      event.key === "Enter"? renderMovie() : ""
+      event.key === "Enter" ? renderMovie() : ""
     }
 
   useEffect(()=>{
@@ -38,7 +38,7 @@ function Movies() {
         <section id="main">
             <div className="input-controls">
                 <input type="text" value={movieTitle}         placeholder='Search though 1000 of movies...' onChange={(event)=>{setMovieTitle(event.target.value)}} 
-                onKeyDown={handleKeyEvent(event)}
+                onKeyDown={(event)=>{handleKeyEvent(event)}}
                   />
                 <button onClick={renderMovie}>Search <LiaSearchengin className='search-icon'/></button>
             </div>
@@ -49,22 +49,7 @@ function Movies() {
               <div className="movies-grid">
                   {movies && movies.map((movie,index)=>{
                     return (
-                      <div key={index} className="movie-card">
-                        {movie.Poster != "N/A"? <img src={movie.Poster} className='movie-poster'/>:<img src={noPosterImg}/>}
-                        <div className='movie-title'>
-                          {movie.Poster === "N/A"? <p style={{color:"goldenrod"}}>{movie.Title}</p> : <p>{movie.Title}</p>}
-                        </div>
-
-                        <div className="hover-info">
-                          <div className="year">
-                            {movie.Year}
-                          </div>
-
-                          <div className="type">
-                            {movie.Type}
-                          </div>
-                        </div>
-                      </div>
+                      <Movie movie={movie} key={index}/>
                     )
                   })}
               </div>
