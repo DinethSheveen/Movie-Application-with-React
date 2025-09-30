@@ -14,8 +14,8 @@ function Movies() {
         {/* MAIN SECTION */}
         <section id="main">
             <div className="input-controls">
-                <input type="text" />
-                <button>Search <LiaSearchengin/></button>
+                <input type="text" placeholder='Search though 1000 of movies...'/>
+                <button>Search <LiaSearchengin className='search-icon'/></button>
             </div>
         </section>
     </div>
