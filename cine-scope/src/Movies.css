@@ -161,10 +161,18 @@
     background-color: hsl(0, 0%, 20%);
 }
 
+@media (max-width:768px){
+    .hero{
+        margin-top: 3.5rem;
+    }
+    .hero img{
+        height: 60vh;
+    }
+}
 
 @media (max-width:576px){
     .hero img{
-        height: 40vh;
+        height: 30vh;
     }
 
     .input-controls input,.input-controls button{

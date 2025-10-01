@@ -13,15 +13,21 @@ function Movies() {
   const [movies,setMovies] = useState([])
   const [movieTitle,setMovieTitle] = useState("")
   const [page,setPage] = useState(1)
+  const [totalPages,setTotalPages] = useState(0)
   
   const fetchMovies = async(page) => {
       if(!movieTitle.trim()){
         return
       }
       else{
-        const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
-        setMovies(response.data.Search);   
-        console.log(response.data);
+        try{
+          const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
+          setMovies(response.data.Search);   
+          setTotalPages(Math.floor(response.data.totalResults/10))          
+        }
+        catch(error){
+          console.error("Error fecthing : ",error)
+        }
       }
     }    
 
@@ -31,7 +37,9 @@ function Movies() {
     } 
 
     const handleKeyEvent = (event) => {
-      event.key === "Enter" ? renderMovie() : ""
+      if(event.key === "Enter"){
+        renderMovie()
+      }  
     }
 
   useEffect(()=>{
@@ -46,7 +54,6 @@ function Movies() {
         <div className="hero">
             <img src={heroImg} alt="" />
         </div>
-
         {/* MAIN SECTION */}
         <section id="main">
             <div id="searchMovie" className="input-controls">
@@ -74,10 +81,12 @@ function Movies() {
                       }
                     }}><FaArrowCircleLeft/> Prev Page</button>
                     
-                    <div><h2>{page}</h2> </div>
+                    <div><h2>{page} off {totalPages}</h2> </div>
 
-                    <button className='page-number' onClick={()=>{
-                      setPage((prevPage)=> prevPage+1)
+                    <button className='page-number' style={page===totalPages?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
+                      if(page<totalPages){
+                        setPage((prevPage)=> prevPage+1)
+                      }
                     }}>Next Page <FaArrowCircleRight/></button>
                 </div>
                 :
