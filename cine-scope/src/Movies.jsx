@@ -9,7 +9,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaArrowCircleRight } from "react-icons/fa";
 
 function Movies() {
-  const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
+  const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
   const [movies,setMovies] = useState([])
   const [movieTitle,setMovieTitle] = useState("")
   const [page,setPage] = useState(1)
