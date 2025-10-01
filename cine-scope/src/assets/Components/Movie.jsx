@@ -4,11 +4,15 @@ import noPosterImg from "../images/noPoster.jpg"
 function Movie({movie}) {
   return (
     <div className="movie-card">
-      {movie.Poster != "N/A" ? (
-        <img src={movie.Poster} className="movie-poster" />
-      ) : (
-        <img src={noPosterImg} />
-      )}
+        <img 
+        src={movie.Poster} 
+        className="movie-poster" 
+        // CATCHES THE BROKEN URL OF MOVIE POSTER OR IF THE POSTER RETURNS N/A 
+        onError={(e) => {
+        e.currentTarget.src = noPosterImg
+      }} 
+        />
+      
       <div className="movie-title">
         {movie.Poster === "N/A" ? (
           <p style={{ color: "goldenrod" }}>{movie.Title}</p>
