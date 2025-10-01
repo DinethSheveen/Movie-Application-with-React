@@ -25,8 +25,9 @@ function Movies() {
       }
     }    
 
-    const renderMovie = ()=>{      
-      fetchMovies(page)      
+    const renderMovie = ()=>{ 
+      setPage(1)     
+      fetchMovies(1)      
     } 
 
     const handleKeyEvent = (event) => {
@@ -65,17 +66,23 @@ function Movies() {
                     )
                   })}
               </div>
-              <div className='pages'>
-                {movies && movies.length>0?<button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
-                  if(page>1){
-                    setPage(prevPage => prevPage-1)
-                  }
-                }}><FaArrowCircleLeft/> Prev Page</button>:""}
-                
-                {movies && movies.length>0?<button className='page-number' onClick={()=>{
-                  setPage((prevPage)=> prevPage+1)
-                }}>Next Page <FaArrowCircleRight/></button>:""}
-              </div>
+              {movies && movies.length > 0 ? 
+                <div className='pages'>
+                    <button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
+                      if(page>1){
+                        setPage(prevPage => prevPage-1)
+                      }
+                    }}><FaArrowCircleLeft/> Prev Page</button>
+                    
+                    <div><h2>{page}</h2> </div>
+
+                    <button className='page-number' onClick={()=>{
+                      setPage((prevPage)=> prevPage+1)
+                    }}>Next Page <FaArrowCircleRight/></button>
+                </div>
+                :
+                ""
+              }
             </div>
         </section>
     </div>
