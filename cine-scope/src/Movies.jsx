@@ -5,19 +5,28 @@ import heroImg from "./assets/images/hero.webp"
 import { LiaSearchengin } from "react-icons/lia";
 import Movie from './assets/Components/Movie';
 import { API_KEY } from '../config';
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 
 function Movies() {
   const API_URL = `http://www.omdbapi.com/?apikey=${API_KEY}`;
   const [movies,setMovies] = useState([])
   const [movieTitle,setMovieTitle] = useState("")
-
-  const fetchMovies = async() => {
-      const response = await axios.get(`${API_URL}&s=${movieTitle}`)
-      setMovies(response.data.Search);      
-    }
+  const [page,setPage] = useState(1)
+  
+  const fetchMovies = async(page) => {
+      if(!movieTitle.trim()){
+        return
+      }
+      else{
+        const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
+        setMovies(response.data.Search);   
+        console.log(response.data);
+      }
+    }    
 
     const renderMovie = ()=>{      
-      fetchMovies()      
+      fetchMovies(page)      
     } 
 
     const handleKeyEvent = (event) => {
@@ -25,8 +34,10 @@ function Movies() {
     }
 
   useEffect(()=>{
-
-  },[movieTitle]) 
+    if(movieTitle.trim()){
+      fetchMovies(page)
+    }
+  },[page]) 
 
   return (
     <div>
@@ -53,6 +64,17 @@ function Movies() {
                       <Movie movie={movie} key={index}/>
                     )
                   })}
+              </div>
+              <div className='pages'>
+                {movies && movies.length>0?<button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
+                  if(page>1){
+                    setPage(prevPage => prevPage-1)
+                  }
+                }}><FaArrowCircleLeft/> Prev Page</button>:""}
+                
+                {movies && movies.length>0?<button className='page-number' onClick={()=>{
+                  setPage((prevPage)=> prevPage+1)
+                }}>Next Page <FaArrowCircleRight/></button>:""}
               </div>
             </div>
         </section>
