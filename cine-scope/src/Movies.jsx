@@ -14,6 +14,7 @@ function Movies() {
   const [movieTitle,setMovieTitle] = useState("")
   const [page,setPage] = useState(1)
   const [totalPages,setTotalPages] = useState(0)
+  const [isLoading,setIsLoading] = useState(false)
   
   const fetchMovies = async(page) => {
       if(!movieTitle.trim()){
@@ -23,7 +24,8 @@ function Movies() {
         try{
           const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
           setMovies(response.data.Search);   
-          setTotalPages(Math.floor(response.data.totalResults/10))          
+          setTotalPages(Math.floor(response.data.totalResults/10))  
+          setIsLoading(false)        
         }
         catch(error){
           console.error("Error fecthing : ",error)
@@ -32,6 +34,7 @@ function Movies() {
     }    
 
     const renderMovie = ()=>{ 
+      setIsLoading(true)
       setPage(1)     
       fetchMovies(1)      
     } 
@@ -62,6 +65,8 @@ function Movies() {
                   />
                 <button onClick={renderMovie}>Search <LiaSearchengin className='search-icon'/></button>
             </div>
+
+            {isLoading? <h3 className='loading-state'>Loading Movies...</h3>:""}
 
             {/* MOVIES SECTION */}
             <div className="movies">
