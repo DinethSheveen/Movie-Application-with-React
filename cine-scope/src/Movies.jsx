@@ -26,21 +26,26 @@ function Movies() {
         try{
           const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
 
-          if(response.data.Response === "True"){
-            setMovies(response.data.Search);  
-            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
-          }
-          else{
-            setMovies([]);
-            setTotalPages(0)
-            setErrorMsg(true)  
-          } 
+          const timeoutId = setTimeout(()=>{
+            if(response.data.Response === "True"){
+              setMovies(response.data.Search);  
+              setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
+            }
+            else{
+              setMovies([]);
+              setTotalPages(0)
+              setErrorMsg(true)  
+            } 
+          },3000)
+
+          setTimeout(()=>{
+            setIsLoading(false)
+            clearTimeout(timeoutId)
+          },2000)
+
         }
         catch(error){
           console.error("Error fecthing : ",error)
-        }
-        finally{
-          setIsLoading(false)        
         }
       }
     }    
@@ -91,14 +96,14 @@ function Movies() {
               {/* MOVIES GRID */}
               <div className="movies-grid">
                   {/* CONDITIONAL RENDERING MOVIES */}
-                  {movies && movies.map((movie)=>{
+                  {!isLoading && movies && movies.map((movie)=>{
                     return (
                       <Movie movie={movie} key={movie.imdbID}/>
                     )
                   })}
               </div>
               {/* CONDITIONAL RENDERING MOVIE PAGES */}
-              {movies && movies.length > 0 ? 
+              {!isLoading && movies && movies.length > 0 ? 
                 <div className='pages'>
                     <button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
                       if(page>1){
