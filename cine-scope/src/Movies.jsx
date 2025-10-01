@@ -15,41 +15,58 @@ function Movies() {
   const [page,setPage] = useState(1)
   const [totalPages,setTotalPages] = useState(0)
   const [isLoading,setIsLoading] = useState(false)
+  const [errorMsg,setErrorMsg] = useState(false)
   
   const fetchMovies = async(page) => {
       if(!movieTitle.trim()){
         return
       }
       else{
+        setIsLoading(true)
         try{
           const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
-          setMovies(response.data.Search);   
-          setTotalPages(Math.floor(response.data.totalResults/10))  
-          setIsLoading(false)        
+
+          if(response.data.Response === "True"){
+            setMovies(response.data.Search);  
+            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))  
+            console.log(response.data);
+            
+          }
+          else{
+            setMovies([]);
+            setTotalPages(0)
+            setErrorMsg(true)  
+          } 
         }
         catch(error){
           console.error("Error fecthing : ",error)
         }
+        finally{
+          setIsLoading(false)        
+        }
       }
     }    
 
+    // RENDERING THE MOVIES AND SETTING THE PAGE NUMBER = 1 
     const renderMovie = ()=>{ 
-      setIsLoading(true)
       setPage(1)     
       fetchMovies(1)      
     } 
 
+    // FETCHING THE MOVIES ONCE THE 'ENTER' KEY IS PRESSED 
     const handleKeyEvent = (event) => {
+      setErrorMsg(false)
       if(event.key === "Enter"){
         renderMovie()
       }  
     }
 
-  useEffect(()=>{
-    if(movieTitle.trim()){
-      fetchMovies(page)
-    }
-  },[page]) 
+    // FETCHING THE MOVIES ONCE THE PAGE NUMBER CHANGES 
+    useEffect(()=>{
+      if(movieTitle.trim()){
+        fetchMovies(page)
+      }
+    },[page]) 
 
   return (
     <div>
@@ -66,18 +83,23 @@ function Movies() {
                 <button onClick={renderMovie}>Search <LiaSearchengin className='search-icon'/></button>
             </div>
 
+            {/*  CONDITIONAL RENDERING THE LOADING STATE */}
             {isLoading? <h3 className='loading-state'>Loading Movies...</h3>:""}
+            
+            {errorMsg? <h3 className='error-msg'>Something went wrong. Please try another movie</h3> : ""}
 
             {/* MOVIES SECTION */}
             <div className="movies">
               {/* MOVIES GRID */}
               <div className="movies-grid">
+                  {/* CONDITIONAL RENDERING MOVIES */}
                   {movies && movies.map((movie,index)=>{
                     return (
                       <Movie movie={movie} key={index}/>
                     )
                   })}
               </div>
+              {/* CONDITIONAL RENDERING MOVIE PAGES */}
               {movies && movies.length > 0 ? 
                 <div className='pages'>
                     <button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
