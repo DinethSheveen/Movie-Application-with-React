@@ -24,6 +24,7 @@
     box-shadow: 2px 2px 10px black;
     color: white;
     padding-left: 1rem;
+    font-size: 1.2rem;
 }
 
 .input-controls button{
@@ -66,7 +67,7 @@
 .movies .movies-grid{
     display: grid;
     padding: 0 2rem;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
     align-items: center;
     justify-content: center;
     gap: 2rem
@@ -146,11 +147,11 @@
     margin: 2rem 0;
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 1rem;
     align-items: center;
 }
 
-.page-number {
+.page-control-btn {
   background-color: hsl(0, 0%, 0%);
   padding: 0.8rem 1.2rem;
   font-weight: bold;
@@ -162,12 +163,18 @@
   gap: 10px;
 }
 
-.page-number:hover{
+.page-control-btn:hover{
     background-color: hsl(0, 0%, 10%);
 }
 
-.page-number:active{
+.page-control-btn:active{
     background-color: hsl(0, 0%, 20%);
+}
+
+@media (max-width:1024px){
+    .hero img{
+        height: 60vh;
+    }
 }
 
 @media (max-width:768px){
@@ -175,13 +182,13 @@
         margin-top: 3.5rem;
     }
     .hero img{
-        height: 60vh;
+        height: 40vh;
     }
 }
 
 @media (max-width:576px){
     .hero img{
-        height: 30vh;
+        height: 20vh;
     }
 
     .input-controls input,.input-controls button{
@@ -194,5 +201,12 @@
     .movies .movies-grid{
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
         gap: 1rem;
+    }
+    .page-number h2{
+        font-size: 1.2rem;
+    }
+    .page-control-btn{
+        padding: 0.8rem;
+        gap: 5px;
     }
 }
