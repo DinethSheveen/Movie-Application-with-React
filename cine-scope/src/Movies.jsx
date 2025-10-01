@@ -28,9 +28,7 @@ function Movies() {
 
           if(response.data.Response === "True"){
             setMovies(response.data.Search);  
-            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))  
-            console.log(response.data);
-            
+            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
           }
           else{
             setMovies([]);
@@ -93,9 +91,9 @@ function Movies() {
               {/* MOVIES GRID */}
               <div className="movies-grid">
                   {/* CONDITIONAL RENDERING MOVIES */}
-                  {movies && movies.map((movie,index)=>{
+                  {movies && movies.map((movie)=>{
                     return (
-                      <Movie movie={movie} key={index}/>
+                      <Movie movie={movie} key={movie.imdbID}/>
                     )
                   })}
               </div>
