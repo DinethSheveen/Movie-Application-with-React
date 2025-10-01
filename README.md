@@ -1,3 +1,49 @@
+# 🎬 Movie Search Web App
+
+---
+
+## 📖 Overview
+
+
+---
+
+## 🚀 Feaatures
+
+
+---
+
+## 🛠️ Tech Stacks
+
+
+---
+
+## 💻 Usage
+
+
+---
+
+## 📸 Screenshots
+
+
+---
+
+## ⚙️ Installtion and Setup
+
+```bash
+
+git clone https://github.com/DinethSheveen/Movie-Application-with-React.git
+
+cd cine-scope
+
+echo // config.js > config.js  (export your API_KEY from here )
+
+npm install
+
+npm run dev
+
+```
+---
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
