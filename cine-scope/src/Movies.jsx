@@ -26,26 +26,21 @@ function Movies() {
         try{
           const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
 
-          const timeoutId = setTimeout(()=>{
-            if(response.data.Response === "True"){
-              setMovies(response.data.Search);  
-              setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
-            }
-            else{
-              setMovies([]);
-              setTotalPages(0)
-              setErrorMsg(true)  
-            } 
-          },3000)
-
-          setTimeout(()=>{
-            setIsLoading(false)
-            clearTimeout(timeoutId)
-          },2000)
-
+          if(response.data.Response === "True"){
+            setMovies(response.data.Search);  
+            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
+          }
+          else{
+            setMovies([]);
+            setTotalPages(0)
+            setErrorMsg(true)  
+          } 
         }
         catch(error){
           console.error("Error fecthing : ",error)
+        }
+        finally{
+          setIsLoading(false)
         }
       }
     }    
@@ -105,15 +100,15 @@ function Movies() {
               {/* CONDITIONAL RENDERING MOVIE PAGES */}
               {!isLoading && movies && movies.length > 0 ? 
                 <div className='pages'>
-                    <button className='page-number' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
+                    <button className='page-control-btn' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
                       if(page>1){
                         setPage(prevPage => prevPage-1)
                       }
                     }}><FaArrowCircleLeft/> Prev Page</button>
                     
-                    <div><h2>{page} off {totalPages}</h2> </div>
+                    <div className='page-number'><h2>{page} off {totalPages}</h2> </div>
 
-                    <button className='page-number' style={page===totalPages?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
+                    <button className='page-control-btn' style={page===totalPages?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
                       if(page<totalPages){
                         setPage((prevPage)=> prevPage+1)
                       }
