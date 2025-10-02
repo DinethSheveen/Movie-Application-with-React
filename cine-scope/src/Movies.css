@@ -67,7 +67,7 @@
 .movies .movies-grid{
     display: grid;
     padding: 0 2rem;
-    grid-template-columns: repeat(auto-fit,minmax(250px,auto));
+    grid-template-columns: repeat(auto-fit,minmax(250px,300px));
     align-items: center;
     justify-content: center;
     gap: 2rem
@@ -101,6 +101,7 @@
     position: absolute;
     bottom: 10px;
     left: 10px;
+    color: goldenrod;
 }
 
 .movie-card .hover-info{
@@ -153,7 +154,7 @@
 
 .page-control-btn {
   background-color: hsl(0, 0%, 0%);
-  padding: 0.8rem 1.2rem;
+  padding: 0.7rem 1rem;
   font-weight: bold;
   border: none;
   border-radius: 10px;
@@ -161,6 +162,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  border: 2px solid grey;
 }
 
 .page-control-btn:hover{
@@ -202,11 +204,17 @@
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
         gap: 1rem;
     }
+    
     .page-number h2{
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
+    
     .page-control-btn{
         padding: 0.8rem;
         gap: 5px;
+    }
+
+    .movie-title p{
+        font-size: 0.8rem;
     }
 }
