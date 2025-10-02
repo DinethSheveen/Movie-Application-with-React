@@ -22,7 +22,8 @@ function Navbar() {
 
                 {/* GENRE SELECTION*/}
                 <div className="menu-links">
-                    <a href="#searchMovie">Search Movie</a>
+                    <a href="#latest-movies">Latest Movies</a>
+                    <a href="#searchMovie">Search</a>
                 </div>
             </div>
         </nav>
