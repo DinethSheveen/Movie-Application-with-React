@@ -3,22 +3,44 @@
 ---
 
 ## 📖 Overview
-
+- Cine-Scope is a responsive movie search web application built with React.js. It integrates the OMDb API to allow users to explore their favorite movies and shows, providing an intuitive UI across desktop, tablet, and mobile devices.
 
 ---
 
-## 🚀 Feaatures
+## 🚀 Key Features
 
+🔎 Movie Search – Search for movies and shows using the OMDb API.
+
+📱 Responsive Design – Optimized layouts for web, iPad, and mobile.
+
+🎭 Movie/Show Details – Display posters, titles, and additional info retrieved from the API.
+
+🌐 Social Media Links – Integrated with social icons via react-icons.
+
+⚡ Fast & Lightweight – Built on React with reusable components and clean styling.
 
 ---
 
 ## 🛠️ Tech Stacks
 
+- Frontend: React.js (JavaScript)
 
----
+- Styling: CSS (custom .css files)
 
-## 💻 Usage
+- Icons: React Icons
 
+- API: OMDb API
+ (movie/show data)
+
+- Tooling: Node.js, npm
+
+Languages breakdown:
+
+- JavaScript (~60%)
+
+- CSS (~37%)
+
+- HTML (~3%)
 
 ---
 
