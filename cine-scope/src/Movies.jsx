@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react'
 import axios from "axios"
 import "./Movies.css"
 import heroImg from "./assets/images/hero.webp"
-import { LiaSearchengin } from "react-icons/lia";
 import Movie from './assets/Components/Movie';
 import { API_KEY } from '../config';
-import { FaArrowCircleLeft } from "react-icons/fa";
-import { FaArrowCircleRight } from "react-icons/fa";
+import Pagination from './assets/Components/Pagination';
+import Search from './assets/Components/Search';
 
 function Movies() {
   const API_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
@@ -28,7 +27,7 @@ function Movies() {
 
           if(response.data.Response === "True"){
             setMovies(response.data.Search);  
-            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))
+            setTotalPages(Math.ceil(Number(response.data.totalResults/10)))            
           }
           else{
             setMovies([]);
@@ -74,12 +73,8 @@ function Movies() {
         </div>
         {/* MAIN SECTION */}
         <section id="main">
-            <div id="searchMovie" className="input-controls">
-                <input type="text" value={movieTitle}         placeholder='Search though 1000 of movies...' onChange={(event)=>{setMovieTitle(event.target.value)}} 
-                onKeyDown={(event)=>{handleKeyEvent(event)}}
-                  />
-                <button onClick={renderMovie}>Search <LiaSearchengin className='search-icon'/></button>
-            </div>
+            {/* SEARCH COMPONENT */}
+            <Search movieTitle={movieTitle} setMovieTitle={setMovieTitle} renderMovie={renderMovie} handleKeyEvent={handleKeyEvent}/>
 
             {/*  CONDITIONAL RENDERING THE LOADING STATE */}
             {isLoading? <h3 className='loading-state'>Loading Movies...</h3>:""}
@@ -97,26 +92,8 @@ function Movies() {
                     )
                   })}
               </div>
-              {/* CONDITIONAL RENDERING MOVIE PAGES */}
-              {!isLoading && movies && movies.length > 0 ? 
-                <div className='pages'>
-                    <button className='page-control-btn' style={page===1?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
-                      if(page>1){
-                        setPage(prevPage => prevPage-1)
-                      }
-                    }}><FaArrowCircleLeft/> Prev Page</button>
-                    
-                    <div className='page-number'><h2>{page} off {totalPages}</h2> </div>
-
-                    <button className='page-control-btn' style={page===totalPages?{cursor:"not-allowed"}:{cursor:"pointer"}} onClick={()=>{
-                      if(page<totalPages){
-                        setPage((prevPage)=> prevPage+1)
-                      }
-                    }}>Next Page <FaArrowCircleRight/></button>
-                </div>
-                :
-                ""
-              }
+              {/* PAGINATION COMPONENT */}
+              <Pagination isLoading={isLoading} movies={movies} page={page} setPage={setPage} totalPages={totalPages}/>
             </div>
         </section>
     </div>
