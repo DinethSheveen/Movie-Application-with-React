@@ -14,15 +14,20 @@ function Movies() {
   const [page,setPage] = useState(1)
   const [totalPages,setTotalPages] = useState(0)
   const [isLoading,setIsLoading] = useState(false)
-  const [errorMsg,setErrorMsg] = useState(false)
+  const [errorMsg,setErrorMsg] = useState("")
   
   const fetchMovies = async(page) => {
+      setErrorMsg("")
       if(!movieTitle.trim()){
         return
       }
       else{
         setIsLoading(true)
         try{
+          if(!API_KEY){
+            setErrorMsg("Missing Your API KEY")
+            return
+          }
           const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
 
           if(response.data.Response === "True"){
@@ -32,11 +37,12 @@ function Movies() {
           else{
             setMovies([]);
             setTotalPages(0)
-            setErrorMsg(true)  
+            setErrorMsg("No Results. Please try another movie")  
           } 
         }
         catch(error){
           console.error("Error fecthing : ",error)
+          setErrorMsg("Network Error. Please try again later")
         }
         finally{
           setIsLoading(false)
@@ -46,13 +52,13 @@ function Movies() {
 
     // RENDERING THE MOVIES AND SETTING THE PAGE NUMBER = 1 
     const renderMovie = ()=>{ 
+      setErrorMsg("")
       setPage(1)     
       fetchMovies(1)      
     } 
 
     // FETCHING THE MOVIES ONCE THE 'ENTER' KEY IS PRESSED 
     const handleKeyEvent = (event) => {
-      setErrorMsg(false)
       if(event.key === "Enter"){
         renderMovie()
       }  
@@ -77,9 +83,9 @@ function Movies() {
             <Search movieTitle={movieTitle} setMovieTitle={setMovieTitle} renderMovie={renderMovie} handleKeyEvent={handleKeyEvent}/>
 
             {/*  CONDITIONAL RENDERING THE LOADING STATE */}
-            {isLoading? <h3 className='loading-state'>Loading Movies...</h3>:""}
+            {isLoading && <h3 className='loading-state'>Loading Movies...</h3>}
             
-            {errorMsg? <h3 className='error-msg'>Something went wrong. Please try another movie</h3> : ""}
+            {errorMsg && <h3 className='error-msg'>{errorMsg}</h3>}
 
             {/* MOVIES SECTION */}
             <div className="movies">
