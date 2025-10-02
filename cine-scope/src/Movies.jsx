@@ -28,7 +28,7 @@ function Movies() {
             setErrorMsg("Missing Your API KEY")
             return
           }
-          const response = await axios.get(`${API_URL}&s=${movieTitle}&page=${page}`)
+          const response = await axios.get(`${API_URL}&s=${movieTitle.trim()}&page=${page}`)
 
           if(response.data.Response === "True"){
             setMovies(response.data.Search);  
