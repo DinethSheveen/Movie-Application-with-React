@@ -1,4 +1,4 @@
-# 🎬 Movie Search Web App
+# 🎬 Cine-Scope (Movie Search Web App)
 
 ---
 
