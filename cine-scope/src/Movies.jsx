@@ -18,12 +18,12 @@ function Movies() {
   
   const fetchMovies = async(page) => {
       setErrorMsg("")
-      setIsLoading(true)
       if(!movieTitle.trim()){
         return
       }
       else{
         try{
+          setIsLoading(true)
           if(!API_KEY){
             setErrorMsg("Missing Your API KEY")
             return
@@ -59,9 +59,11 @@ function Movies() {
 
     // FETCHING THE MOVIES ONCE THE 'ENTER' KEY IS PRESSED 
     const handleKeyEvent = (event) => {
-      if(event.key === "Enter"){
-        renderMovie()
-      }  
+      if(movieTitle.trim()){
+        if(event.key === "Enter"){
+          renderMovie()
+        } 
+      } 
     }
 
     // FETCHING THE MOVIES ONCE THE PAGE NUMBER CHANGES 
