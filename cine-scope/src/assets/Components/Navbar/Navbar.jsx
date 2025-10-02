@@ -17,12 +17,11 @@ function Navbar() {
 
                 {/* APP NAME */}
                 <div className="nav-header">
-                    <h2>Cine-Scope</h2>
+                    <h2><a href="">Cine-Scope</a></h2>
                 </div>
 
                 {/* GENRE SELECTION*/}
                 <div className="menu-links">
-                    <a href="#latest-movies">Latest Movies</a>
                     <a href="#searchMovie">Search</a>
                 </div>
             </div>

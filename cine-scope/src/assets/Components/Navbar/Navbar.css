@@ -29,11 +29,6 @@ nav{
     color: transparent;
 }
 
-.menu-links{
-    display: flex;
-    gap: 10px;
-}
-
 .icon,.menu-links a{
     text-decoration: none;
     color: goldenrod;
