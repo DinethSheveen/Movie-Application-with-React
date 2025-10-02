@@ -14,11 +14,7 @@ function Movie({movie}) {
         />
       
       <div className="movie-title">
-        {movie.Poster === "N/A" ? (
-          <p style={{ color: "goldenrod" }}>{movie.Title}</p>
-        ) : (
-          <p>{movie.Title}</p>
-        )}
+        <p>{movie.Title}</p>
       </div>
 
       <div className="hover-info">
