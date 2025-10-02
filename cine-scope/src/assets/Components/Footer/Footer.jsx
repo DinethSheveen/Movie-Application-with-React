@@ -29,8 +29,8 @@ function Footer() {
             </div>
         </div>
         <div className="flex-bottom">
-            <p>&copy; 2025 Cine-Scope </p>
-            <p>All Rights Reserved</p>
+            <p>© {new Date().getFullYear()} Cine-Scope. Made with ❤️ using React.</p>
+
         </div>
     </div>
   )
