@@ -204,6 +204,10 @@
         grid-template-columns: repeat(auto-fit,minmax(150px,1fr));
         gap: 1rem;
     }
+
+    .pages{
+        gap: 0.5rem;
+    }
     
     .page-number h2{
         font-size: 1rem;

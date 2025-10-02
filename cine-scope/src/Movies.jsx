@@ -18,11 +18,11 @@ function Movies() {
   
   const fetchMovies = async(page) => {
       setErrorMsg("")
+      setIsLoading(true)
       if(!movieTitle.trim()){
         return
       }
       else{
-        setIsLoading(true)
         try{
           if(!API_KEY){
             setErrorMsg("Missing Your API KEY")
