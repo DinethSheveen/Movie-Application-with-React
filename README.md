@@ -29,24 +29,32 @@
   <figcaption><b>Mobile-View</b></figcaption>
 </figure>
 
+---
+
 <figure>
-  <img src="./cine-scope/public/ipad-view.png" alt="Ipad-View" width="200"/>
+  <img src="./cine-scope/public/ipad-view.png" alt="Ipad-View" width="400"/>
   <figcaption><b>Ipad-View</b></figcaption>
 </figure>
 
+---
+
 <figure>
-  <img src="./cine-scope/public/surfacepro-view.png" alt="Surface Pro-View" width="200"/>
+  <img src="./cine-scope/public/surfacepro-view.png" alt="Surface Pro-View" width="400"/>
   <figcaption><b>Surface Pro-View</b></figcaption>
 </figure>
 
+---
+
 <figure>
-  <img src="./cine-scope/public/web-view.png" alt="Web-View" width="200"/>
+  <img src="./cine-scope/public/web-view.png" alt="Web-View" width="600"/>
   <figcaption><b>Web-View</b></figcaption>
 </figure>
 
 ---
 
 ## ⚙️ Installtion and Setup
+
+CREATE YOUR API KEY ON OMDB API (https://www.omdbapi.com/)
 
 ```bash
 
