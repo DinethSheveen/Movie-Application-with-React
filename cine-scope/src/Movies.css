@@ -60,6 +60,10 @@
     margin: 2rem;
 }
 
+#main{
+    min-height: 30vh;
+}
+
 .movies{
     margin: 2rem 0;
 }
