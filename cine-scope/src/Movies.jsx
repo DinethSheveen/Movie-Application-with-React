@@ -74,7 +74,7 @@ function Movies() {
     },[page]) 
 
   return (
-    <div>
+    <div className='main-body'>
         {/* HERO SECTION */}
         <div className="hero">
             <img src={heroImg} alt="" />

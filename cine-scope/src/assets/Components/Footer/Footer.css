@@ -1,78 +1,11 @@
 .footer{
-    background-color: hsl(0, 0%, 10%);
+    padding: 0.5rem 1rem;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
-    padding: 1rem;
+    background-color: black;
 }
 
-.footer h1{
-    color: hsl(43, 74%, 49%);
-}
-
-.footer p, .footer a{
-    color: hsl(0, 0%, 60%);
-    text-decoration: none;
-    font-size:  1.1rem ;
-}
-
-.footer a:hover{
-    color: hsl(0, 0%, 70%);
-}
-
-.footer a:active{
-    color: hsl(0, 0%, 8 0%);
-}
-
-.footer .msg{
-    margin: 1rem 0;
-    max-width: 15rem;
-}
-
-.flex-container{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.flex-container .column-one,.column-two{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-grow: 1;
-}
-
-.column-three{
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-}
-
-.facebook,.twitter,.instagram{
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: purple;
-    padding: 1rem;
-    font-size: 1.2rem;
-    border-radius: 50%;
-}
-
-.facebook{
-    background-color: hsl(240, 100%, 50%);
-}
-
-.twitter{
-    background-color: hsl(203, 92%, 55%);
-}
-
-.instagram{
-    background: linear-gradient(235deg,hsl(300, 100%, 35%),hsl(60, 100%,50%));
-}
-
-.flex-bottom{
-    margin-top: 2rem;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
+.footer .app-name{
+    color: goldenrod;
+    font-size: 2rem;
 }

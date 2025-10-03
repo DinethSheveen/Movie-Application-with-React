@@ -60,8 +60,8 @@
     margin: 2rem;
 }
 
-#main{
-    min-height: 30vh;
+.main-body{
+    min-height: 80vh;
 }
 
 .movies{
