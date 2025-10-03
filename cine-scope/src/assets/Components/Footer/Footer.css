@@ -3,9 +3,79 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer p{
+    color: hsl(0, 0%, 60%);
+}
+
+.footer a{
+    text-decoration: none;
+}
+
+.footer-logo{
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img{
+    width: 100px;
 }
 
 .footer .app-name{
-    color: goldenrod;
-    font-size: 2rem;
+    color: hsl(43, 74%, 49%);
+}
+
+.footer .msg{
+    margin: 1rem 0;
+    max-width: 250px;
+    font-size: 1.2rem;
+}
+
+.flex-container{
+    display: flex;
+    justify-content: space-around;
+    margin: 1rem 0;
+}
+
+.flex-column{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer .media{
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+}
+
+.footer .media p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-radius:50% ;
+    background-color: hsl(43, 74%, 49%);
+    cursor: pointer;
+}
+
+.copyright-section{
+    margin: 1rem;
+    line-height: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media (max-width:576px){
+    .flex-container{
+        flex-direction: column;
+    }
+
+    .footer a,.footer .media{
+        margin: 0.5rem 0;
+    }
 }
