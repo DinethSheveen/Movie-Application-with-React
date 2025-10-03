@@ -46,6 +46,10 @@
     gap: 10px;
 }
 
+.flex-column a:hover{
+    color: hsl(0, 0%, 70%);
+}
+
 .footer .media{
     flex-grow: 1;
     display: flex;
@@ -60,6 +64,12 @@
     border-radius:50% ;
     background-color: hsl(43, 74%, 49%);
     cursor: pointer;
+    transition: 0.5s;
+}
+
+.footer .media p:hover{
+    background-color: transparent;
+    border: 1px solid white;
 }
 
 .copyright-section{

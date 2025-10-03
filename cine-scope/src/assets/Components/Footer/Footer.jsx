@@ -18,7 +18,7 @@ function Footer() {
 
         {/* MSG */}
         <p className="msg">
-            <p>Expore trending movies and shows</p>
+            Expore trending movies and shows
         </p>
 
         {/* FLEX-CONTAINER */}
@@ -29,7 +29,7 @@ function Footer() {
             </div>
 
             <div className="flex-column">
-                <a href="">Tranding Movies</a>
+                <a href="#trendingMovies">Trending Movies</a>
                 <a href="">TV Series</a>
             </div>
 
